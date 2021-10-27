@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 
 public partial class CameraRenderer {
     const string bufferName = "Render Camera";
+    bool enableDynamicBatching, enableInstancing;
     
     static ShaderTagId unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit");
     CommandBuffer buffer = new CommandBuffer {
@@ -13,6 +14,11 @@ public partial class CameraRenderer {
     ScriptableRenderContext ctx;
     CullingResults cullingResults;
     Camera camera;
+
+    public CameraRenderer(bool enableDynamicBatching, bool enableInstancing){
+        this.enableDynamicBatching = enableDynamicBatching;
+        this.enableInstancing = enableInstancing;
+    }
 
     public void Render(ScriptableRenderContext ctx, Camera camera) {
         this.ctx = ctx;
@@ -48,7 +54,10 @@ public partial class CameraRenderer {
         };
         var drawingSettings = new DrawingSettings(
             unlitShaderTagId, sortingSettings
-        );
+        ){
+            enableDynamicBatching = enableDynamicBatching,
+			enableInstancing = enableInstancing
+        };
         var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
 
         ctx.DrawRenderers(

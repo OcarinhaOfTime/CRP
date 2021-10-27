@@ -5,7 +5,9 @@ using UnityEngine.Rendering;
 
 [CreateAssetMenu(menuName = "Rendering/Custom Render Pipeline")]
 public class CRPAsset : RenderPipelineAsset {
+    [SerializeField]
+	bool enableDynamicBatching = true, enableInstancing = true, useSRPBatcher = true;
     protected override UnityEngine.Rendering.RenderPipeline CreatePipeline() {
-        return new CRP();
+        return new CRP(enableDynamicBatching, enableInstancing, useSRPBatcher);
     }
 }

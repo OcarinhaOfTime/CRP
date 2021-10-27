@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c9fcb91838cc42a48fccc51258ac7, type: 3}
   m_Name: CRP
   m_EditorClassIdentifier: 
+  enableDynamicBatching: 1
+  enableInstancing: 1
+  useSRPBatcher: 1
