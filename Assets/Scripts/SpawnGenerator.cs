@@ -35,7 +35,25 @@ public class SpawnGenerator : MonoBehaviour {
         BaseGenerator((i, go) => {
             go.transform.localPosition = Random.insideUnitCircle * 4;
             var pomp = go.GetComponent<PerObjectMaterialProperties>();
-            pomp.SetColor(Random.ColorHSV());
+            //pomp.color(Random.ColorHSV());
+        });
+    }
+
+    [ContextMenu("Grid Generator")]
+    public void GridGenerator() {
+        BaseGenerator((i, go) => {
+            float x = i % 4;
+            float y = i / 4;
+            x /= 3;
+            y /= 3;
+            y = 1-y;
+            var p = new Vector3(Mathf.Lerp(-2, 2, x), 0, Mathf.Lerp(-2, 2, y));
+            go.transform.localPosition = p;
+            go.name = "obj" + i;
+            var pomp = go.GetComponent<PerObjectMaterialProperties>();
+            pomp.smoothness = 1-y;
+            pomp.metallic = x;
+            pomp.OnValidate();
         });
     }
 }

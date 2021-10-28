@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeshBall : MonoBehaviour {
-    static int baseColorId = Shader.PropertyToID("_BaseColor");
-    static int cutoffId = Shader.PropertyToID("_Cutoff");
+    static int 
+        baseColorId = Shader.PropertyToID("_BaseColor"),
+        cutoffId = Shader.PropertyToID("_Cutoff"),
+        smoothnessId = Shader.PropertyToID("_Smoothness"),
+        metallicId = Shader.PropertyToID("_Metallic");
 
 	[SerializeField]
 	Mesh mesh = default;
@@ -13,7 +16,10 @@ public class MeshBall : MonoBehaviour {
 	Material material = default;
     Matrix4x4[] matrices = new Matrix4x4[1023];
     Vector4[] baseColors = new Vector4[1023];
-    float[] cutoffs = new float[1023];
+    float[] 
+        cutoffs = new float[1023],
+        smoothnesses = new float[1023],
+        metallics = new float[1023];
 
     MaterialPropertyBlock block;
 
@@ -28,6 +34,8 @@ public class MeshBall : MonoBehaviour {
                 new Vector4(Random.value, Random.value, Random.value, 1f);
 
             cutoffs[i] = Random.Range(.2f, .8f);
+            smoothnesses[i] = Random.value;
+            metallics[i] = Random.value;
         }
     }
 
@@ -36,6 +44,8 @@ public class MeshBall : MonoBehaviour {
             block = new MaterialPropertyBlock();
             block.SetVectorArray(baseColorId, baseColors);
             block.SetFloatArray(cutoffId, cutoffs);
+            block.SetFloatArray(smoothnessId, smoothnesses);
+            block.SetFloatArray(metallicId, metallics);
         }
 
         Graphics.DrawMeshInstanced(mesh, 0, material, matrices, 1023, block);

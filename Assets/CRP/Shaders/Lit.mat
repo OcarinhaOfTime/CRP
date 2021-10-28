@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit 0
-  m_Shader: {fileID: 4800000, guid: 4c0abac2a6580104bb4bffd56ba0f248, type: 3}
-  m_ShaderKeywords: _CLIPPING
+  m_Name: Lit
+  m_Shader: {fileID: 4800000, guid: 3bb4eb5d047819841a7e1c2f7039e867, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap: {}
@@ -25,13 +25,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaCutoff: 0.35
-    - _AlphaCutout: 0.5
-    - _Clipping: 1
-    - _Cutoff: 0.62
-    - _DstBlend: 0
-    - _SrcBlend: 1
-    - _ZWrite: 1
+    - _Clipping: 0
+    - _Cutoff: 0.16
+    - _DstBlend: 10
+    - _Metallic: 0
+    - _PremulAlpha: 0
+    - _Smoothness: 0.5
+    - _SrcBlend: 5
+    - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 0.754717, g: 0.046279836, b: 0.046279836, a: 1}
   m_BuildTextureStacks: []

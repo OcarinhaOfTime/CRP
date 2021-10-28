@@ -8,6 +8,7 @@ public class CRP : RenderPipeline {
     public CRP(bool enableDynamicBatching, bool enableInstancing, bool useSRPBatcher){
         renderer = new CameraRenderer(enableDynamicBatching, enableInstancing);
         GraphicsSettings.useScriptableRenderPipelineBatching = useSRPBatcher;
+        GraphicsSettings.lightsUseLinearIntensity = true;
     }
     protected override void Render(ScriptableRenderContext ctx, Camera[] cameras) {
         foreach(var cam in cameras){
