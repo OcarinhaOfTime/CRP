@@ -9,11 +9,11 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Unlit
   m_Shader: {fileID: 4800000, guid: 4c0abac2a6580104bb4bffd56ba0f248, type: 3}
-  m_ShaderKeywords: _CLIPPING
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -27,11 +27,11 @@ Material:
     m_Floats:
     - _AlphaCutoff: 0.35
     - _AlphaCutout: 0.5
-    - _Clipping: 1
-    - _Cutoff: 0.62
+    - _Clipping: 0
+    - _Cutoff: 0.33
     - _DstBlend: 0
     - _SrcBlend: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 0.764151, g: 0.1333659, b: 0.1333659, a: 0.62352943}
   m_BuildTextureStacks: []

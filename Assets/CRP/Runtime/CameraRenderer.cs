@@ -23,20 +23,24 @@ public partial class CameraRenderer {
         this.enableInstancing = enableInstancing;
     }
 
-    public void Render(ScriptableRenderContext ctx, Camera camera) {
+    public void Render(ScriptableRenderContext ctx, Camera camera, ShadowSettings shadowSettings) {
         this.ctx = ctx;
         this.camera = camera;
 
         PrepareBuffer();
         PrepareForSceneWindow();
 
-        if (!Cull()) return;
+        if (!Cull(shadowSettings.maxDistance)) return;
         
-        lighting.Setup(ctx, cullingResults);
+        buffer.BeginSample(SampleName);
+		ExecuteBuffer();
+        lighting.Setup(ctx, cullingResults, shadowSettings);
+        buffer.EndSample(SampleName);
         Setup();
         DrawVisibleGeometry();
         DrawUnsupportedShaders();
         DrawGizmos();
+        lighting.Cleanup();
         Submit();
     }
 
@@ -92,8 +96,9 @@ public partial class CameraRenderer {
         buffer.Clear();
     }
 
-    bool Cull() {
+    bool Cull(float maxShadowDistance) {
         if (camera.TryGetCullingParameters(out var p)) {
+            p.shadowDistance = Mathf.Min(maxShadowDistance, camera.farClipPlane);
             cullingResults = ctx.Cull(ref p);
             return true;
         }

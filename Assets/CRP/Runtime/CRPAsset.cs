@@ -7,7 +7,11 @@ using UnityEngine.Rendering;
 public class CRPAsset : RenderPipelineAsset {
     [SerializeField]
 	bool enableDynamicBatching = true, enableInstancing = true, useSRPBatcher = true;
+    [SerializeField]
+	ShadowSettings shadowSettings = default;
     protected override UnityEngine.Rendering.RenderPipeline CreatePipeline() {
-        return new CRP(enableDynamicBatching, enableInstancing, useSRPBatcher);
+        return new CRP(
+            enableDynamicBatching, enableInstancing, useSRPBatcher, shadowSettings
+        );
     }
 }

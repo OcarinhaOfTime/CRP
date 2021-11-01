@@ -5,14 +5,18 @@ using UnityEngine.Rendering;
 
 public class CRP : RenderPipeline {    
     CameraRenderer renderer;
-    public CRP(bool enableDynamicBatching, bool enableInstancing, bool useSRPBatcher){
+    ShadowSettings shadowSettings;
+    public CRP(
+        bool enableDynamicBatching, bool enableInstancing, 
+        bool useSRPBatcher, ShadowSettings shadowSettings){
         renderer = new CameraRenderer(enableDynamicBatching, enableInstancing);
         GraphicsSettings.useScriptableRenderPipelineBatching = useSRPBatcher;
         GraphicsSettings.lightsUseLinearIntensity = true;
+        this.shadowSettings = shadowSettings;
     }
     protected override void Render(ScriptableRenderContext ctx, Camera[] cameras) {
         foreach(var cam in cameras){
-            renderer.Render(ctx, cam);
+            renderer.Render(ctx, cam, shadowSettings);
         }
     }
 }
