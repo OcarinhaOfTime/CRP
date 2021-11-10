@@ -1,0 +1,72 @@
+{
+    "podCalibrations": [
+        {
+            "pdfPath": "path",
+            "zipPath": "path",
+            "serialNumber": 1806150,
+            "calibrationResults": [
+                {
+                    "target": "1806150",
+                    "reference": "980100",
+                    "slope": 0.78,
+                    "offset": 3.14,
+                    "start": "2021-10-01",
+                    "end": "2021-10-30",
+                    "sensor": "NO2"
+                },
+                {
+                    "target": "1806150",
+                    "reference": "980100",
+                    "slope": 0.78,
+                    "offset": 3.14,
+                    "start": "2021-10-01",
+                    "end": "2021-10-30",
+                    "sensor": "NO"
+                },
+                {
+                    "target": "1806150",
+                    "reference": "980100",
+                    "slope": 0.78,
+                    "offset": 3.14,
+                    "start": "2021-10-01",
+                    "end": "2021-10-30",
+                    "sensor": "O3"
+                }
+            ]
+        },
+        {
+            "pdfPath": "path",
+            "zipPath": "path",
+            "serialNumber": 1712150,
+            "calibrationResults": [
+                {
+                    "target": "1712150",
+                    "reference": "980100",
+                    "slope": 0.78,
+                    "offset": 3.14,
+                    "start": "2021-10-01",
+                    "end": "2021-10-30",
+                    "sensor": "NO2"
+                },
+                {
+                    "target": "1712150",
+                    "reference": "980100",
+                    "slope": 0.78,
+                    "offset": 3.14,
+                    "start": "2021-10-01",
+                    "end": "2021-10-30",
+                    "sensor": "NO"
+                },
+                {
+                    "target": "1712150",
+                    "reference": "980100",
+                    "slope": 0.78,
+                    "offset": 3.14,
+                    "start": "2021-10-01",
+                    "end": "2021-10-30",
+                    "sensor": "O3"
+                }
+            ]
+        }
+    ]
+}

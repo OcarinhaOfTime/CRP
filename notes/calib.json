@@ -1,0 +1,29 @@
+[
+    {
+        "target": "1806150",
+        "reference": "980100",
+        "slope": 0.78,
+        "offset": 3.14,
+        "start": "2021-10-01",
+        "end": "2021-10-30",
+        "sensor": "NO2"
+    },
+    {
+        "target": "1806150",
+        "reference": "980100",
+        "slope": 0.78,
+        "offset": 3.14,
+        "start": "2021-10-01",
+        "end": "2021-10-30",
+        "sensor": "NO"
+    },
+    {
+        "target": "1806150",
+        "reference": "980100",
+        "slope": 0.78,
+        "offset": 3.14,
+        "start": "2021-10-01",
+        "end": "2021-10-30",
+        "sensor": "O3"
+    }
+]

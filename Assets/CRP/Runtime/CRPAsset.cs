@@ -14,4 +14,9 @@ public class CRPAsset : RenderPipelineAsset {
             enableDynamicBatching, enableInstancing, useSRPBatcher, shadowSettings
         );
     }
+
+    [ContextMenu("Print this crap")]
+    public void PrintFilterSettingValue(){
+        Debug.Log((int)shadowSettings.directional.filter);
+    }
 }

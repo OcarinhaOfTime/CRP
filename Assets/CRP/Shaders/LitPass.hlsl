@@ -9,19 +9,6 @@
 #include "../ShaderLibrary/BRDF.hlsl"
 #include "../ShaderLibrary/Lighting.hlsl"
 
-#define UNITY_MATRIX_M unity_ObjectToWorld
-#define UNITY_MATRIX_I_M unity_WorldToObject
-#define UNITY_MATRIX_V unity_MatrixV
-#define UNITY_MATRIX_VP unity_MatrixVP
-#define UNITY_MATRIX_P glstate_matrix_projection
-#define UNITY_PREV_MATRIX_M unity_PrevMatrixM
-#define UNITY_PREV_MATRIX_I_M unity_PrevMatrixIM
-
-
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl"
-
-
 UNITY_INSTANCING_BUFFER_START(UnityPerMaterial)
 	UNITY_DEFINE_INSTANCED_PROP(float4, _BaseColor)
 	UNITY_DEFINE_INSTANCED_PROP(float4, _BaseMap_ST)
@@ -75,16 +62,19 @@ float4 LitPassFragment (Varyings input) : SV_TARGET {
 	surface.position = input.positionWS;
 	surface.normal = normalize(input.normalWS);
 	surface.viewDirection = normalize(_WorldSpaceCameraPos - input.positionWS);
+	surface.depth = -TransformWorldToView(input.positionWS).z;
 	surface.color = base.rgb;
 	surface.alpha = base.a;
 	surface.metallic = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Metallic);
 	surface.smoothness = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Smoothness);
+	surface.dither = InterleavedGradientNoise(input.positionCS.xy, 0);
 
 	BRDF brdf = GetBRDF(surface);
 
 	float3 color = GetLighting(surface, brdf);
 	
 	return float4(color, surface.alpha);
+	//return surface.dither;
 }
 
 
