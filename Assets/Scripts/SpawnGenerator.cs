@@ -22,6 +22,7 @@ public class SpawnGenerator : MonoBehaviour {
             var inst = Instantiate(prefab);
             inst.transform.SetParent(transform);
             inst.SetActive(true);
+            inst.name = prefab.name;
             fn(i, inst);
         }
     }
@@ -83,7 +84,7 @@ public class SpawnGenerator : MonoBehaviour {
             float y = Random.Range(-3f, 3f);
             var p = new Vector3(x, 0, y);
             go.transform.localPosition = p;
-            go.name = "obj" + i;
+            go.name = $"obj_{go.name}_{i}";
             var pomp = go.GetComponent<PerObjectMaterialProperties>();
             pomp.baseColor = Random.ColorHSV();
             pomp.smoothness = Random.value;

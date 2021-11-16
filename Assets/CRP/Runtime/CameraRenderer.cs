@@ -56,6 +56,15 @@ public partial class CameraRenderer {
         ExecuteBuffer();
     }
 
+    bool Cull(float maxShadowDistance) {
+        if (camera.TryGetCullingParameters(out var p)) {
+            p.shadowDistance = Mathf.Min(maxShadowDistance, camera.farClipPlane);
+            cullingResults = ctx.Cull(ref p);
+            return true;
+        }
+        return false;
+    }
+
     void DrawVisibleGeometry() {
         var sortingSettings = new SortingSettings(camera) {
             criteria = SortingCriteria.CommonOpaque
@@ -94,14 +103,5 @@ public partial class CameraRenderer {
     void ExecuteBuffer() {
         ctx.ExecuteCommandBuffer(buffer);
         buffer.Clear();
-    }
-
-    bool Cull(float maxShadowDistance) {
-        if (camera.TryGetCullingParameters(out var p)) {
-            p.shadowDistance = Mathf.Min(maxShadowDistance, camera.farClipPlane);
-            cullingResults = ctx.Cull(ref p);
-            return true;
-        }
-        return false;
-    }
+    }    
 }
