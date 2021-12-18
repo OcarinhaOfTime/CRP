@@ -73,7 +73,10 @@ public partial class CameraRenderer {
             unlitShaderTagId, sortingSettings
         ){
             enableDynamicBatching = enableDynamicBatching,
-			enableInstancing = enableInstancing
+			enableInstancing = enableInstancing,
+            perObjectData = PerObjectData.Lightmaps | 
+                PerObjectData.LightProbe |
+                PerObjectData.LightProbeProxyVolume
         };
         drawingSettings.SetShaderPassName(1, litShaderTagId);
         var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);

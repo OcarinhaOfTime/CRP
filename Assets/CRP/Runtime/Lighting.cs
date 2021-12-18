@@ -43,7 +43,7 @@ public class Lighting {
         for(int i=0; i<visibleLights.Length; i++){
             var l = visibleLights[i];
             
-            if (l.lightType != LightType.Directional || l.light.bakingOutput.isBaked) continue;
+            if (l.lightType != LightType.Directional || l.light.bakingOutput.lightmapBakeType == LightmapBakeType.Baked) continue;
             SetupDirectionalLight(dirLightCount++, ref l);
             if(dirLightCount >= maxDirLightCount) break;
         }
