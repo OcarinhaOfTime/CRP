@@ -3,7 +3,7 @@ Shader "CRP/Unlit"
     Properties
     {
         _BaseMap("Texture", 2D) = "white" {}
-        _BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+        [HDR]_BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
         _Cutoff ("Alpha Cutoff", Range(0, 1)) = .5
         [Enum(UnityEngine.Rendering.BlendMode)] _SrcBlend ("Src Blend", Float) = 1
 		[Enum(UnityEngine.Rendering.BlendMode)] _DstBlend ("Dst Blend", Float) = 0
